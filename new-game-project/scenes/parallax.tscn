@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dxmsxr8yerbby"]
+
+[ext_resource type="Texture2D" uid="uid://dfdigx2edp416" path="res://assets/background/Super Mountain Dusk Files/Super Mountain Dusk Files/Assets/version A/Layers/sky.png" id="1_m2aw8"]
+[ext_resource type="Texture2D" uid="uid://bh7htjox111mf" path="res://assets/background/Super Mountain Dusk Files/Super Mountain Dusk Files/Assets/version A/Layers/far-mountains.png" id="2_dgjee"]
+[ext_resource type="Texture2D" uid="uid://ckkxlh42y2tgw" path="res://assets/background/Super Mountain Dusk Files/Super Mountain Dusk Files/Assets/version A/Layers/mountains.png" id="2_m6okp"]
+
+[node name="Parallax" type="Node2D" unique_id=1207805517]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=583682351]
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1489966931]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+motion_offset = Vector2(0, 40)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky" unique_id=1038763730]
+position = Vector2(0, -115.975)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_m2aw8")
+centered = false
+
+[node name="Far Mountains" type="ParallaxLayer" parent="ParallaxBackground" unique_id=766436378]
+motion_scale = Vector2(0.5, 0)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Far Mountains" unique_id=1923251655]
+texture = ExtResource("2_dgjee")
+centered = false
+
+[node name="Far Mountains2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1681726084]
+position = Vector2(160, 0)
+motion_scale = Vector2(0.5, 0)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Far Mountains2" unique_id=1737972533]
+texture = ExtResource("2_dgjee")
+centered = false
+
+[node name="Near Mountains" type="ParallaxLayer" parent="ParallaxBackground" unique_id=332067435]
+texture_filter = 1
+motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Near Mountains" unique_id=1777962260]
+texture = ExtResource("2_m6okp")
+centered = false
