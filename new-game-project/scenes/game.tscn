@@ -2,14 +2,17 @@
 
 [ext_resource type="Script" uid="uid://duj0falcbfd1q" path="res://scripts/game_manager.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://dxmsxr8yerbby" path="res://scenes/parallax.tscn" id="1_vtaks"]
-[ext_resource type="PackedScene" uid="uid://cgqpg3bl07ghk" path="res://scenes/platform.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dxmsxr8yerbby" path="res://scenes/ui/parallax.tscn" id="1_vtaks"]
+[ext_resource type="PackedScene" uid="uid://cgqpg3bl07ghk" path="res://scenes/background/platform.tscn" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://ckwm7iqr41hap" path="res://assets/sprites/world_tileset.png" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://cpsebg2lxc8ax" path="res://scenes/coin.tscn" id="4_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://dhq0pa6na6p7k" path="res://scenes/killzone.tscn" id="5_iywne"]
-[ext_resource type="PackedScene" uid="uid://dg4n7tp4d7q1y" path="res://scenes/slime.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://cpsebg2lxc8ax" path="res://scenes/items/coin.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://dhq0pa6na6p7k" path="res://scenes/background/killzone.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://dg4n7tp4d7q1y" path="res://scenes/enemies/slime.tscn" id="6_p57ef"]
 [ext_resource type="FontFile" uid="uid://njydc2e50off" path="res://assets/fonts/PixelOperator8.ttf" id="7_u5sy4"]
 [ext_resource type="FontFile" uid="uid://dm58qjkkxqjox" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="9_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://c8iu0ol8nc4h1" path="res://scenes/items/item_pickup.tscn" id="13_kvuet"]
+[ext_resource type="PackedScene" uid="uid://cmb7r676uqnmo" path="res://scenes/ui/pause_menu.tscn" id="pause_menu"]
+[ext_resource type="PackedScene" uid="uid://dbcv8403ynb7b" path="res://scenes/ui/player_hud.tscn" id="player_hud"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -344,3 +347,12 @@ theme_override_fonts/font = ExtResource("7_u5sy4")
 theme_override_font_sizes/font_size = 8
 text = "Falling hurts..."
 metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" parent="." unique_id=1462439104 instance=ExtResource("pause_menu")]
+
+[node name="PlayerHUD" parent="." unique_id=1987248365 instance=ExtResource("player_hud")]
+
+[node name="ItemPickup" parent="." unique_id=997823585 instance=ExtResource("13_kvuet")]
+position = Vector2(338, 161)
+scale = Vector2(0.5, 0.5)
+weapon_damage = 2

@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://7c827h18hws6"]
+
+[ext_resource type="Script" uid="uid://b16cq8pqb8j2n" path="res://scripts/title_screen.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dv2ap6go723on" path="res://assets/background/title-screen.png" id="2"]
+[ext_resource type="FontFile" uid="uid://dm58qjkkxqjox" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_mgrm8"]
+[ext_resource type="FontFile" uid="uid://njydc2e50off" path="res://assets/fonts/PixelOperator8.ttf" id="4_dc4i4"]
+
+[node name="TitleScreen" type="Control" unique_id=350286531]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="Backdrop" type="TextureRect" parent="." unique_id=170625044]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Center" type="CenterContainer" parent="." unique_id=213710446]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu" type="VBoxContainer" parent="Center" unique_id=670113021]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Center/Menu" unique_id=327371093]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.86, 0.67, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.04, 0.16, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_mgrm8")
+theme_override_font_sizes/font_size = 48
+text = "Knight Platformer
+2.0"
+horizontal_alignment = 1
+
+[node name="Play" type="Button" parent="Center/Menu" unique_id=1727508271]
+custom_minimum_size = Vector2(200, 44)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_dc4i4")
+theme_override_font_sizes/font_size = 22
+text = "Play"
+
+[node name="Settings" type="Button" parent="Center/Menu" unique_id=1144783570]
+custom_minimum_size = Vector2(200, 44)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_dc4i4")
+theme_override_font_sizes/font_size = 22
+text = "Settings"
+
+[node name="Quit" type="Button" parent="Center/Menu" unique_id=221545398]
+custom_minimum_size = Vector2(200, 44)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_dc4i4")
+theme_override_font_sizes/font_size = 22
+text = "Quit"
+
+[node name="SettingsPage" type="VBoxContainer" parent="Center" unique_id=639030789]
+visible = false
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Heading" type="Label" parent="Center/SettingsPage" unique_id=1149778620]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.86, 0.67, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_mgrm8")
+theme_override_font_sizes/font_size = 40
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="Center/SettingsPage" unique_id=1568544682]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_dc4i4")
+theme_override_font_sizes/font_size = 20
+text = "Master volume"
+
+[node name="Volume" type="HSlider" parent="Center/SettingsPage" unique_id=665268749]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+step = 5.0
+value = 100.0
+
+[node name="Fullscreen" type="CheckButton" parent="Center/SettingsPage" unique_id=757723056]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_dc4i4")
+theme_override_font_sizes/font_size = 20
+text = "Fullscreen"
+
+[node name="Back" type="Button" parent="Center/SettingsPage" unique_id=775591367]
+custom_minimum_size = Vector2(200, 44)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 22
+text = "Back"
+
+[connection signal="pressed" from="Center/Menu/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Center/Menu/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Center/Menu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="value_changed" from="Center/SettingsPage/Volume" to="." method="_on_volume_changed"]
+[connection signal="toggled" from="Center/SettingsPage/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="pressed" from="Center/SettingsPage/Back" to="." method="_on_back_pressed"]

@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cwf1bm76xv78p" path="res://assets/sprites/knight.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://c3ubxpp10k6x6" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="AudioStream" uid="uid://cqmx372domwtg" path="res://assets/sounds/sword_slash.mp3" id="3_dqkch"]
+[ext_resource type="AudioStream" uid="uid://bnbmkd5genkks" path="res://assets/sounds/punch.mp3" id="4_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -171,7 +173,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ksya"]
 radius = 5.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1883077234]
+[node name="Player" type="CharacterBody2D" unique_id=1883077234 groups=["player"]]
 z_index = 5
 collision_layer = 3
 script = ExtResource("1_g2els")
@@ -185,3 +187,9 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=580628734]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_7ksya")
+
+[node name="SwordSlashSound" type="AudioStreamPlayer2D" parent="." unique_id=1685157308]
+stream = ExtResource("3_dqkch")
+
+[node name="PunchSound" type="AudioStreamPlayer2D" parent="." unique_id=1602541858]
+stream = ExtResource("4_qlg0r")

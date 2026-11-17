@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://dbcv8403ynb7b"]
+
+[ext_resource type="Script" uid="uid://bjgsylttk0u5w" path="res://scripts/player_hud.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://njydc2e50off" path="res://assets/fonts/PixelOperator8.ttf" id="2_iraov"]
+
+[sub_resource type="StyleBoxFlat" id="Track"]
+bg_color = Color(0.1, 0.07, 0.17, 0.95)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="Health"]
+bg_color = Color(0.85, 0.24, 0.29, 1)
+
+[sub_resource type="StyleBoxFlat" id="Stamina"]
+bg_color = Color(0.29, 0.78, 0.57, 1)
+
+[node name="PlayerHUD" type="CanvasLayer" unique_id=2051629402]
+layer = 5
+script = ExtResource("1")
+
+[node name="Vitals" type="VBoxContainer" parent="." unique_id=1196294008]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 214.0
+mouse_filter = 2
+theme_override_constants/separation = 5
+
+[node name="HealthLabel" type="Label" parent="Vitals" unique_id=765109281]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_iraov")
+text = "Health"
+
+[node name="Health" type="ProgressBar" parent="Vitals" unique_id=550399499]
+custom_minimum_size = Vector2(194, 12)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("Track")
+theme_override_styles/fill = SubResource("Health")
+show_percentage = false
+
+[node name="StaminaLabel" type="Label" parent="Vitals" unique_id=1610119949]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_iraov")
+text = "Stamina"
+
+[node name="Stamina" type="ProgressBar" parent="Vitals" unique_id=1430856660]
+custom_minimum_size = Vector2(194, 12)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("Track")
+theme_override_styles/fill = SubResource("Stamina")
+show_percentage = false
+
+[node name="Hotbar" type="HBoxContainer" parent="." unique_id=1814144348]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -146.0
+offset_top = -76.0
+offset_right = 146.0
+offset_bottom = -20.0
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="Slot1" type="Panel" parent="Hotbar" unique_id=1926226084]
+custom_minimum_size = Vector2(55, 55)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Track")
+
+[node name="Number" type="Label" parent="Hotbar/Slot1" unique_id=261058425]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 2.0
+offset_right = 20.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(1, 0.86, 0.67, 1)
+theme_override_fonts/font = ExtResource("2_iraov")
+text = "1"
+
+[node name="Slot2" type="Panel" parent="Hotbar" unique_id=1827815087]
+custom_minimum_size = Vector2(55, 55)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Track")
+
+[node name="Number" type="Label" parent="Hotbar/Slot2" unique_id=1717378166]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 2.0
+theme_override_colors/font_color = Color(1, 0.86, 0.67, 1)
+theme_override_fonts/font = ExtResource("2_iraov")
+text = "2"
+
+[node name="Slot3" type="Panel" parent="Hotbar" unique_id=2052598304]
+custom_minimum_size = Vector2(55, 55)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Track")
+
+[node name="Number" type="Label" parent="Hotbar/Slot3" unique_id=710970897]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 2.0
+theme_override_colors/font_color = Color(1, 0.86, 0.67, 1)
+theme_override_fonts/font = ExtResource("2_iraov")
+text = "3"
+
+[node name="Slot4" type="Panel" parent="Hotbar" unique_id=1115041754]
+custom_minimum_size = Vector2(55, 55)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Track")
+
+[node name="Number" type="Label" parent="Hotbar/Slot4" unique_id=267867475]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 2.0
+theme_override_colors/font_color = Color(1, 0.86, 0.67, 1)
+theme_override_fonts/font = ExtResource("2_iraov")
+text = "4"
+
+[node name="Slot5" type="Panel" parent="Hotbar" unique_id=354806863]
+custom_minimum_size = Vector2(55, 55)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Track")
+
+[node name="Number" type="Label" parent="Hotbar/Slot5" unique_id=1576887721]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 2.0
+theme_override_colors/font_color = Color(1, 0.86, 0.67, 1)
+theme_override_fonts/font = ExtResource("2_iraov")
+text = "5"

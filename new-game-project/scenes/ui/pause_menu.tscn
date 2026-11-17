@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cmb7r676uqnmo"]
+
+[ext_resource type="Script" uid="uid://dews668bbfvb8" path="res://scripts/pause_menu.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://dm58qjkkxqjox" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_kukqi"]
+[ext_resource type="FontFile" uid="uid://njydc2e50off" path="res://assets/fonts/PixelOperator8.ttf" id="2_myx47"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=964593552]
+process_mode = 3
+layer = 20
+script = ExtResource("1")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=1306913075]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.06, 0.04, 0.13, 0.75)
+
+[node name="Center" type="CenterContainer" parent="Overlay" unique_id=195620098]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="PanelContainer" parent="Overlay/Center" unique_id=882984729]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Overlay/Center/Panel" unique_id=1996231794]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="Menu" type="VBoxContainer" parent="Overlay/Center/Panel/Margin" unique_id=337460690]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Heading" type="Label" parent="Overlay/Center/Panel/Margin/Menu" unique_id=420521838]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.86, 0.67, 1)
+theme_override_fonts/font = ExtResource("2_kukqi")
+theme_override_font_sizes/font_size = 32
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="Overlay/Center/Panel/Margin/Menu" unique_id=1066513851]
+custom_minimum_size = Vector2(200, 44)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_myx47")
+text = "Resume"
+
+[node name="MainMenu" type="Button" parent="Overlay/Center/Panel/Margin/Menu" unique_id=599314709]
+custom_minimum_size = Vector2(200, 44)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_myx47")
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="Overlay/Center/Panel/Margin/Menu" unique_id=267567429]
+custom_minimum_size = Vector2(200, 44)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_myx47")
+text = "Quit"
+
+[connection signal="pressed" from="Overlay/Center/Panel/Margin/Menu/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Overlay/Center/Panel/Margin/Menu/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Overlay/Center/Panel/Margin/Menu/Quit" to="." method="_on_quit_pressed"]
