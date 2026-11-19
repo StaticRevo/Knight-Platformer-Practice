@@ -67,6 +67,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	_update_held_weapon(delta)
 
 func take_damage(amount: int) -> void:
 	if amount <= 0 or hit_cooldown > 0.0 or lives <= 0:
@@ -92,19 +93,42 @@ func _play_death_sequence() -> void:
 # Inventory code
 signal item_added(slot_index: int, icon: Texture2D)
 
-const INVENTORY_SIZE := 5
+const INVENTORY_SIZE := 20
+# Equipment points to owned inventory entries, so equipping cannot duplicate items.
+var equipment: Dictionary = {"Helmet": -1, "Chestplate": -1, "Pants": -1, "Boots": -1}
+var abilities: Array[Resource] = []
 var inventory: Array[Texture2D] = []
 var inventory_damage: Array[int] = []
+# Match each inventory slot to its weapon sound.
+var inventory_sounds: Array[AudioStream] = []
+var weapon_sound_player: AudioStreamPlayer2D
+var inventory_weapon_data: Array[Resource] = []
 var selected_slot := 0
+var equipped_slot := -1
+var weapon_tween: Tween
+var weapon_swinging := false
+var hand_phase := 0.0
+
+@onready var hand: Node2D = $HandPivot
+@onready var held_weapon: Sprite2D = $HandPivot/WeaponSprite
 var attack_cooldown := 0.0
 
-func add_item(icon: Texture2D, damage: int = 0) -> bool:
+func add_item(icon: Texture2D, damage: int = 0, attack_sound: AudioStream = null, weapon_data: Resource = null) -> bool:
+	# Acquired abilities have their own section and do not consume bag space.
+	if weapon_data != null and weapon_data.item_type == "Ability":
+		for ability in abilities:
+			if ability == weapon_data:
+				return true
+		abilities.append(weapon_data)
+		return true
 	if inventory.size() >= INVENTORY_SIZE:
 		return false
 
 	var slot_index := inventory.size()
 	inventory.append(icon)
-	inventory_damage.append(damage)
+	inventory_damage.append(damage if weapon_data == null or weapon_data.item_type == "Weapon" else 0)
+	inventory_sounds.append(attack_sound)
+	inventory_weapon_data.append(weapon_data)
 	item_added.emit(slot_index, icon)
 	return true
 
@@ -135,26 +159,66 @@ func _attack() -> void:
 		if forward >= (-5.0 if not armed else 0.0) and forward <= reach and absf(distance.y) <= 16.0:
 			enemy.take_damage(damage)
 	if armed:
-		sword_slash_sound.play()
+		# Use the equipped reward's sound, or the original sword sound.
+		var sound: AudioStream = inventory_sounds[selected_slot]
+		if sound != null:
+			if not is_instance_valid(weapon_sound_player):
+				weapon_sound_player = AudioStreamPlayer2D.new()
+				add_child(weapon_sound_player)
+			weapon_sound_player.stream = sound
+			weapon_sound_player.play()
+		else:
+			sword_slash_sound.play()
 		_animate_swing(inventory[selected_slot], facing)
 	else:
 		punch_sound.play()
 		_animate_punch(facing)
 
-func _animate_swing(icon: Texture2D, facing: float) -> void:
-	# Scale only the in-world sword. The hotbar uses the original icon.
-	var swing := Sprite2D.new()
-	swing.scale = Vector2(0.5, 0.5)
-	swing.texture = icon
-	swing.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	swing.position = Vector2(facing * 7.0, -8.0)
-	swing.offset = Vector2(8.0, 0.0)
-	swing.rotation = (-1.1 if facing > 0.0 else PI + 1.1)
-	add_child(swing)
-	var tween := swing.create_tween()
-	tween.tween_property(swing, "rotation", swing.rotation + 2.2 * facing, 0.18)
-	tween.tween_callback(swing.queue_free)
+func _update_held_weapon(delta: float) -> void:
+	# Refresh after collecting or selecting a slot. Empty slots hide the weapon.
+	var armed := selected_slot < inventory.size() and inventory_damage[selected_slot] > 0
+	held_weapon.visible = armed and lives > 0
+	if not held_weapon.visible:
+		_cancel_weapon_swing()
+		equipped_slot = -1
+		return
+	var data: Resource = inventory_weapon_data[selected_slot]
+	var rest := deg_to_rad(data.resting_angle if data != null else -35.0)
+	if equipped_slot != selected_slot:
+		_cancel_weapon_swing()
+		equipped_slot = selected_slot
+		held_weapon.texture = inventory[selected_slot]
+		var size_scale: float = data.held_scale if data != null else 0.5
+		held_weapon.scale = Vector2.ONE * size_scale
+		# Put the handle at the pivot instead of rotating around the icon's center.
+		held_weapon.position = -(data.grip_position if data != null else Vector2(8, 24)) * size_scale
+		hand.rotation = rest
+	if not weapon_swinging:
+		hand.scale.x = -1.0 if animated_sprite.flip_h else 1.0
+		hand.position.x = 5.0 * hand.scale.x
+		hand_phase += delta * (14.0 if absf(velocity.x) > 1.0 else 3.0)
+		hand.position.y = -8.0 + sin(hand_phase) * (0.7 if is_on_floor() else 0.0)
+		hand.rotation = rest + sin(hand_phase) * 0.04
 
+func _cancel_weapon_swing() -> void:
+	# Slot changes interrupt the old animation safely.
+	if weapon_tween != null and weapon_tween.is_valid():
+		weapon_tween.kill()
+	weapon_swinging = false
+
+func _animate_swing(_icon: Texture2D, facing: float) -> void:
+	_update_held_weapon(0.0)
+	_cancel_weapon_swing()
+	weapon_swinging = true
+	hand.scale.x = facing
+	hand.position = Vector2(5.0 * facing, -8.0)
+	var rest := hand.rotation
+	# Wind up, slash quickly, then recover with the handle fixed at the hand.
+	weapon_tween = create_tween()
+	weapon_tween.tween_property(hand, "rotation", rest - 0.7, 0.07)
+	weapon_tween.tween_property(hand, "rotation", rest + 1.6, 0.10).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	weapon_tween.tween_property(hand, "rotation", rest, 0.18).set_trans(Tween.TRANS_SINE)
+	weapon_tween.tween_callback(func(): weapon_swinging = false)
 
 func _animate_punch(facing: float) -> void:
 	# A small swipe shows the click even when the attack misses.

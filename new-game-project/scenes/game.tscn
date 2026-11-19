@@ -355,4 +355,3 @@ metadata/_edit_use_anchors_ = true
 [node name="ItemPickup" parent="." unique_id=997823585 instance=ExtResource("13_kvuet")]
 position = Vector2(338, 161)
 scale = Vector2(0.5, 0.5)
-weapon_damage = 2

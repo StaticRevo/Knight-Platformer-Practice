@@ -7,6 +7,11 @@ extends CanvasLayer
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		get_viewport().set_input_as_handled()
+		# Escape closes the inventory first instead of opening two menus.
+		var inventory := get_parent().get_node_or_null("PlayerHUD/InventoryPanel")
+		if inventory != null and inventory.visible:
+			inventory.close()
+			return
 		_set_pause_menu(not overlay.visible)
 
 func _set_pause_menu(open: bool) -> void:

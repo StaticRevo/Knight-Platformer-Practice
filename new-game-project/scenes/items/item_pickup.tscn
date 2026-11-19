@@ -2,15 +2,31 @@
 
 [ext_resource type="Texture2D" uid="uid://41bepaql43jh" path="res://assets/sprites/32x32.png" id="1_im1t2"]
 [ext_resource type="Script" uid="uid://641p8756032v" path="res://scripts/item_pickup.gd" id="1_yiukj"]
+[ext_resource type="FontFile" uid="uid://njydc2e50off" path="res://assets/fonts/PixelOperator8.ttf" id="4_jgpgv"]
+[ext_resource type="Resource" uid="uid://krkqhj781bv6" path="res://scenes/items/dualdagger_reward.tres" id="4_mfer6"]
+[ext_resource type="Script" uid="uid://c7htg53asrrrf" path="res://scripts/chest_reward.gd" id="RewardType"]
+[ext_resource type="Resource" uid="uid://b4q6o3pnf3tx4" path="res://scenes/items/sword_reward.tres" id="SwordData"]
+
+[sub_resource type="AtlasTexture" id="ChestIcon"]
+atlas = ExtResource("1_im1t2")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="SwordReward"]
+atlas = ExtResource("1_im1t2")
+region = Rect2(190.885, 1441.175, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ksya"]
 
 [node name="ItemPickup" type="Area2D" unique_id=1472516400]
 script = ExtResource("1_yiukj")
+rewards = Array[ExtResource("RewardType")]([ExtResource("SwordData"), ExtResource("4_mfer6")])
+prompt_font = ExtResource("4_jgpgv")
+world_icon = SubResource("ChestIcon")
+reward_icon = SubResource("SwordReward")
+weapon_damage = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=602325240]
-texture = ExtResource("1_im1t2")
-region_enabled = true
+texture = SubResource("ChestIcon")
 region_rect = Rect2(190.885, 1441.175, 32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1322481171]

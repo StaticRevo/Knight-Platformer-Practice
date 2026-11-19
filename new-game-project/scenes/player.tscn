@@ -193,3 +193,12 @@ stream = ExtResource("3_dqkch")
 
 [node name="PunchSound" type="AudioStreamPlayer2D" parent="." unique_id=1602541858]
 stream = ExtResource("4_qlg0r")
+
+
+[node name="HandPivot" type="Node2D" parent="."]
+position = Vector2(5, -8)
+
+[node name="WeaponSprite" type="Sprite2D" parent="HandPivot"]
+visible = false
+texture_filter = 1
+centered = false

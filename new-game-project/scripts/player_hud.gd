@@ -23,6 +23,9 @@ func _update_vitals() -> void:
 		slot.self_modulate = Color(1.7, 1.5, 1.8) if slot.get_index() == player.selected_slot else Color.WHITE
 
 func _on_item_added(slot_index: int, texture: Texture2D) -> void:
+	# Only the first five bag entries appear in the compact hotbar.
+	if slot_index >= hotbar.get_child_count():
+		return
 	var slot := $Hotbar.get_child(slot_index) as Panel
 	var icon := TextureRect.new()
 	icon.texture = texture

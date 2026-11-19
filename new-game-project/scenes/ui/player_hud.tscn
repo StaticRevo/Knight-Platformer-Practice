@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bjgsylttk0u5w" path="res://scripts/player_hud.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://njydc2e50off" path="res://assets/fonts/PixelOperator8.ttf" id="2_iraov"]
+[ext_resource type="Script" uid="uid://nnu2yhl2c7ho" path="res://scripts/inventory_panel.gd" id="InventoryScript"]
 
 [sub_resource type="StyleBoxFlat" id="Track"]
 bg_color = Color(0.1, 0.07, 0.17, 0.95)
@@ -139,3 +140,20 @@ offset_top = 2.0
 theme_override_colors/font_color = Color(1, 0.86, 0.67, 1)
 theme_override_fonts/font = ExtResource("2_iraov")
 text = "5"
+
+[node name="InventoryHint" type="Label" parent="." unique_id=1241594892]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -183.0
+offset_top = 17.0
+offset_right = -27.0
+offset_bottom = 33.0
+grow_horizontal = 0
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_iraov")
+text = "I · Inventory"
+
+[node name="InventoryPanel" type="PanelContainer" parent="." unique_id=564497930]
+visible = false
+script = ExtResource("InventoryScript")

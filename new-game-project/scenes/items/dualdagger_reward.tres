@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3 uid="uid://krkqhj781bv6"]
+
+[ext_resource type="AudioStream" uid="uid://c8bnrirgk7d8o" path="res://assets/sounds/dagger_sound.mp3" id="1_xqi21"]
+[ext_resource type="Texture2D" uid="uid://41bepaql43jh" path="res://assets/sprites/32x32.png" id="2_lp3m4"]
+[ext_resource type="Script" uid="uid://c7htg53asrrrf" path="res://scripts/chest_reward.gd" id="3_rta18"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8j78n"]
+atlas = ExtResource("2_lp3m4")
+region = Rect2(256, 1439, 32, 32)
+
+[resource]
+resource_name = "Sword"
+script = ExtResource("3_rta18")
+icon = SubResource("AtlasTexture_8j78n")
+weapon_damage = 3
+attack_sound = ExtResource("1_xqi21")
