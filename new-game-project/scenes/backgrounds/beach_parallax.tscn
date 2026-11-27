@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://jhkopsu2rxf5"]
+
+[ext_resource type="Texture2D" uid="uid://clmd20xha88v2" path="res://assets/background/beach_layers/CloudsTexture.png" id="CloudsTexture"]
+[ext_resource type="Texture2D" uid="uid://cfaijupgvrg17" path="res://assets/background/beach_layers/FarMountainsTexture.png" id="FarMountainsTexture"]
+[ext_resource type="Texture2D" uid="uid://bpn8iws8fm0nf" path="res://assets/background/beach_layers/GrassTexture.png" id="GrassTexture"]
+[ext_resource type="Texture2D" uid="uid://bksw7djr0cpri" path="res://assets/background/beach_layers/LargeRocksTexture.png" id="LargeRocksTexture"]
+[ext_resource type="Texture2D" uid="uid://du30eb072yyfn" path="res://assets/background/beach_layers/MiddleMountainsTexture.png" id="MiddleMountainsTexture"]
+[ext_resource type="Texture2D" uid="uid://blbpadp00u4" path="res://assets/background/beach_layers/NearMountainsTexture.png" id="NearMountainsTexture"]
+[ext_resource type="Texture2D" uid="uid://cho38auv2rnti" path="res://assets/background/beach_layers/SandTexture.png" id="SandTexture"]
+[ext_resource type="Texture2D" uid="uid://cgymwsvq7vu8f" path="res://assets/background/beach_layers/SeaTexture.png" id="SeaTexture"]
+[ext_resource type="Texture2D" uid="uid://clbr0nwmhef0" path="res://assets/background/beach_layers/SkyTexture.png" id="SkyTexture"]
+[ext_resource type="Texture2D" uid="uid://dyfjqqymi6qnx" path="res://assets/background/beach_layers/SmallRocksTexture.png" id="SmallRocksTexture"]
+
+[node name="Parallax2" type="Node2D" unique_id=1692063962]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=747474081]
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1724201101]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+motion_offset = Vector2(0, 40)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky" unique_id=689878245]
+position = Vector2(1, -130)
+scale = Vector2(3, 3.5)
+texture = ExtResource("SkyTexture")
+centered = false
+
+[node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1954202385]
+texture_filter = 1
+motion_scale = Vector2(0.08, 0)
+motion_mirroring = Vector2(394, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Clouds" unique_id=155178254]
+texture_repeat = 2
+position = Vector2(0, -21)
+texture = ExtResource("CloudsTexture")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 394, 44)
+
+[node name="Far Mountains" type="ParallaxLayer" parent="ParallaxBackground" unique_id=2133740072]
+texture_filter = 1
+motion_scale = Vector2(0.5, 0)
+motion_mirroring = Vector2(394, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Far Mountains" unique_id=1404042001]
+texture_repeat = 2
+position = Vector2(8, 33)
+texture = ExtResource("FarMountainsTexture")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 394, 102)
+
+[node name="Middle Mountains" type="ParallaxLayer" parent="ParallaxBackground" unique_id=254352018]
+texture_filter = 1
+motion_scale = Vector2(0.65, 0)
+motion_mirroring = Vector2(394, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Middle Mountains" unique_id=1131424454]
+texture_repeat = 2
+position = Vector2(-2, 51)
+texture = ExtResource("MiddleMountainsTexture")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 394, 43)
+
+[node name="Near Mountains" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1531363527]
+texture_filter = 1
+motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(394, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Near Mountains" unique_id=1195280484]
+texture_repeat = 2
+position = Vector2(0, 66)
+texture = ExtResource("NearMountainsTexture")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 394, 25)
+
+[node name="Sea" type="ParallaxLayer" parent="ParallaxBackground" unique_id=647315302]
+texture_filter = 1
+motion_scale = Vector2(0.5, 0)
+motion_mirroring = Vector2(394, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sea" unique_id=685278106]
+texture_repeat = 2
+position = Vector2(-3, 81.00001)
+scale = Vector2(1, 1.5)
+texture = ExtResource("SeaTexture")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 394, 47)
+
+[node name="Sand" type="ParallaxLayer" parent="ParallaxBackground" unique_id=682147355]
+texture_filter = 1
+motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(394, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sand" unique_id=840073612]
+texture_repeat = 2
+position = Vector2(-1, 125)
+scale = Vector2(1, 1.4)
+texture = ExtResource("SandTexture")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 394, 57)
+
+[node name="Large Rocks" type="ParallaxLayer" parent="ParallaxBackground" unique_id=588577545]
+texture_filter = 1
+motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(394, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Large Rocks" unique_id=602786164]
+texture_repeat = 2
+position = Vector2(0, 145)
+texture = ExtResource("LargeRocksTexture")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 394, 26)
+
+[node name="Small Rocks" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1665163079]
+texture_filter = 1
+motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(394, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Small Rocks" unique_id=1652506981]
+texture_repeat = 2
+position = Vector2(0, 157)
+texture = ExtResource("SmallRocksTexture")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 394, 23)
+
+[node name="Grass" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1753473480]
+texture_filter = 1
+motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(394, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Grass" unique_id=1440673413]
+texture_repeat = 2
+position = Vector2(0, 150)
+texture = ExtResource("GrassTexture")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 394, 26)

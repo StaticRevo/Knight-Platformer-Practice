@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://duj0falcbfd1q" path="res://scripts/game_manager.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://dxmsxr8yerbby" path="res://scenes/ui/parallax.tscn" id="1_vtaks"]
+[ext_resource type="PackedScene" uid="uid://dxmsxr8yerbby" path="res://scenes/backgrounds/mountain_parallax.tscn" id="1_vtaks"]
 [ext_resource type="PackedScene" uid="uid://cgqpg3bl07ghk" path="res://scenes/background/platform.tscn" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://ckwm7iqr41hap" path="res://assets/sprites/world_tileset.png" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cpsebg2lxc8ax" path="res://scenes/items/coin.tscn" id="4_lbhrr"]
@@ -11,6 +11,7 @@
 [ext_resource type="FontFile" uid="uid://njydc2e50off" path="res://assets/fonts/PixelOperator8.ttf" id="7_u5sy4"]
 [ext_resource type="FontFile" uid="uid://dm58qjkkxqjox" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="9_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://c8iu0ol8nc4h1" path="res://scenes/items/item_pickup.tscn" id="13_kvuet"]
+[ext_resource type="PackedScene" uid="uid://cpm25n6mljuvh" path="res://scenes/backgrounds/custom_mountain_parallax.tscn" id="15_ir15t"]
 [ext_resource type="PackedScene" uid="uid://cmb7r676uqnmo" path="res://scenes/ui/pause_menu.tscn" id="pause_menu"]
 [ext_resource type="PackedScene" uid="uid://dbcv8403ynb7b" path="res://scenes/ui/player_hud.tscn" id="player_hud"]
 
@@ -224,6 +225,11 @@ _data = {
 
 [node name="Game" type="Node2D" unique_id=539754275]
 
+[node name="Parallax" parent="." unique_id=1207805517 instance=ExtResource("1_vtaks")]
+
+[node name="CustomMountainParallax" parent="." unique_id=1072353250 instance=ExtResource("15_ir15t")]
+position = Vector2(203, 269)
+
 [node name="GameManager" type="Node" parent="." unique_id=351685487]
 unique_name_in_owner = true
 script = ExtResource("1_gee14")
@@ -260,8 +266,6 @@ limit_bottom = 315
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_vertical_enabled = true
-
-[node name="Parallax" parent="." unique_id=1207805517 instance=ExtResource("1_vtaks")]
 
 [node name="Killzone" parent="." unique_id=685835697 instance=ExtResource("5_iywne")]
 position = Vector2(-5, 169)

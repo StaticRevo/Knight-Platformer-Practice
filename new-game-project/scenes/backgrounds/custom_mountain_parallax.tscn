@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://cpm25n6mljuvh"]
+
+[ext_resource type="Texture2D" uid="uid://b0kkugfng6fp4" path="res://assets/background/custom_mountain_layers/clouds.png" id="Clouds"]
+[ext_resource type="Texture2D" uid="uid://c3a8jtr5qucab" path="res://assets/background/custom_mountain_layers/distantforest.png" id="DistantForest"]
+[ext_resource type="Texture2D" uid="uid://dn7eq5endu3e" path="res://assets/background/custom_mountain_layers/farmountains.png" id="FarMountains"]
+[ext_resource type="Texture2D" uid="uid://dv5in3214i1fv" path="res://assets/background/custom_mountain_layers/foothills.png" id="Foothills"]
+[ext_resource type="Texture2D" uid="uid://do662hr3f0k7n" path="res://assets/background/custom_mountain_layers/ground.png" id="Ground"]
+[ext_resource type="Texture2D" uid="uid://rvb73f0ncchd" path="res://assets/background/custom_mountain_layers/middlemountains.png" id="MiddleMountains"]
+[ext_resource type="Texture2D" uid="uid://slm36c1y1efq" path="res://assets/background/custom_mountain_layers/nearmountains.png" id="NearMountains"]
+[ext_resource type="Texture2D" uid="uid://b04hfobh6xrek" path="res://assets/background/custom_mountain_layers/sky.png" id="Sky"]
+[ext_resource type="Texture2D" uid="uid://65pi3msvwuao" path="res://assets/background/custom_mountain_layers/trees.png" id="Trees"]
+
+[node name="CustomMountainParallax" type="Node2D" unique_id=1072353250]
+position = Vector2(3, -58)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=900570612]
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1189244824]
+texture_filter = 1
+position = Vector2(3, -58)
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky" unique_id=905329266]
+position = Vector2(-3, -13)
+scale = Vector2(2, 2)
+texture = ExtResource("Sky")
+centered = false
+
+[node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1919136385]
+texture_filter = 1
+position = Vector2(3, -58)
+motion_scale = Vector2(0.08, 0)
+motion_mirroring = Vector2(600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Clouds" unique_id=174583817]
+texture_repeat = 2
+position = Vector2(1, 84)
+texture = ExtResource("Clouds")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 58)
+
+[node name="Far Mountains" type="ParallaxLayer" parent="ParallaxBackground" unique_id=801449852]
+texture_filter = 1
+position = Vector2(3, -58)
+motion_scale = Vector2(0.25, 0)
+motion_mirroring = Vector2(600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Far Mountains" unique_id=2078309350]
+texture_repeat = 2
+position = Vector2(0, 95)
+texture = ExtResource("FarMountains")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 107)
+
+[node name="Middle Mountains" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1016468761]
+texture_filter = 1
+position = Vector2(3, -58)
+motion_scale = Vector2(0.45, 0)
+motion_mirroring = Vector2(600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Middle Mountains" unique_id=1967655405]
+texture_repeat = 2
+position = Vector2(0, 108)
+texture = ExtResource("MiddleMountains")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 91)
+
+[node name="Near Mountains" type="ParallaxLayer" parent="ParallaxBackground" unique_id=2024324038]
+texture_filter = 1
+position = Vector2(3, -58)
+motion_scale = Vector2(0.65, 0)
+motion_mirroring = Vector2(600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Near Mountains" unique_id=122994902]
+texture_repeat = 2
+position = Vector2(-5, 131)
+texture = ExtResource("NearMountains")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 67)
+
+[node name="Foothills" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1527016725]
+texture_filter = 1
+position = Vector2(3, -58)
+motion_scale = Vector2(0.8, 0)
+motion_mirroring = Vector2(600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Foothills" unique_id=559280189]
+texture_repeat = 2
+position = Vector2(1, 147)
+texture = ExtResource("Foothills")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 49)
+
+[node name="Distant Forest" type="ParallaxLayer" parent="ParallaxBackground" unique_id=839355305]
+texture_filter = 1
+position = Vector2(3, -58)
+motion_scale = Vector2(0.85, 0)
+motion_mirroring = Vector2(600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Distant Forest" unique_id=1769402548]
+texture_repeat = 2
+position = Vector2(0, 145)
+scale = Vector2(1, 1.8)
+texture = ExtResource("DistantForest")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 55)
+
+[node name="Trees" type="ParallaxLayer" parent="ParallaxBackground" unique_id=720432916]
+texture_filter = 1
+position = Vector2(3, -58)
+motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Trees" unique_id=1666461515]
+texture_repeat = 2
+position = Vector2(0, 140)
+texture = ExtResource("Trees")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 67)
+
+[node name="Ground" type="ParallaxLayer" parent="ParallaxBackground" unique_id=2098366639]
+texture_filter = 1
+position = Vector2(3, -58)
+motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Ground" unique_id=172030200]
+texture_repeat = 2
+position = Vector2(0, 202)
+scale = Vector2(1, 2)
+texture = ExtResource("Ground")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 14)
